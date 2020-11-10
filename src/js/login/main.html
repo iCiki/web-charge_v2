@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>weui.js</title>
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.0.1/weui.min.css">
+    <style>
+        html, body{
+            height: 100%;
+            background-color: #f8f8f8;
+        }
+        body{
+            font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+        }
+        .item{
+            padding: 10px 0;
+        }
+        .item__title{
+            margin-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: #999;
+            font-weight: normal;
+            font-size: 14px;
+        }
+        .item__ctn{
+            padding: 15px 15px;
+        }
+        .page_feedback{
+            padding: 15px;
+            overflow: auto;
+            background-color: #FFFFFF;
+        }
+
+        /*fix fastclick很难点中的bug*/
+        label > * { pointer-events: none; }
+
+    </style>
+</head>
+<body ontouchstart style="height:100%;">
+<!-- <div class="page" style="height:100%;">-->
+<!--    <div class="page__bd" style="height: 100%;">-->
+<!--        <div class="weui-tab">-->
+<!--            <div class="weui-tab__panel">-->
+<!--            </div>-->
+<!--            <div class="weui-tabbar tab-bottom">-->
+<!--                <a th:onclick="'javasctipt:gototitlecard()'" class="weui-tabbar__item weui-bar__item_on">-->
+<!--                    <span style="display: inline-block;position: relative;">-->
+<!--                        <img src="../../images/nav_tab_icon_my.png" alt="" class="weui-tabbar__icon">-->
+<!--                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>-->
+<!--                    </span>-->
+<!--                    <p class="weui-tabbar__label">首页</p>-->
+<!--                </a>-->
+<!--                <a th:onclick="'javasctipt:collecttitle()'" class="weui-tabbar__item">-->
+<!--                    <img src="./images/nav_tab_icon_my.png" alt="" class="weui-tabbar__icon">-->
+<!--                    <p class="weui-tabbar__label">充电记录</p>-->
+<!--                </a>-->
+<!--                <a th:onclick="'javasctipt:outnotebox()'" class="weui-tabbar__item">-->
+<!--                    <span style="display: inline-block;position: relative;">-->
+<!--                        <img src="./images/nav_tab_icon_my.png" alt="" class="weui-tabbar__icon">-->
+<!--                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>-->
+<!--                    </span>-->
+<!--&lt;!&ndash;                    &ndash;&gt;-->
+<!--                    <p class="weui-tabbar__label">我的</p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<footer>
+    <span class="footer-child">
+        <a href="index.html">
+            <img class="footer-img" src="static/icon/index/homepage_fill.svg" alt=""/>
+            <span class="footer-span footer-span-active">首页</span>
+        </a>
+    </span>
+    <span class="footer-child">
+        <a href="customService.html">
+            <img class="footer-img" src="static/icon/index/customerservice.svg" alt=""/>
+            <span class="footer-span">客服</span>
+        </a>
+    </span>
+    <span class="footer-child">
+        <a href="myAfterLogin.html">
+            <img class="footer-img" src="static/icon/index/mine.svg" alt=""/>
+            <span class="footer-span ">我的</span>
+        </a>
+    </span>
+</footer>
+
+</body>
+</html>
