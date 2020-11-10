@@ -10,14 +10,14 @@ import Swiper from './swiper/swiper';
 import Check from './check/check';
 import Uploader from './uploader/uploader';
 import List from './list/list';
-import Login from './login/login';
+import entry from './entry/entry';
+import login from './login/login';
 
 attachFastClick.attach(document.body);
 
 const router = new Router();
 router
     .push(Home)
-    .push(Login)
     .push(Register)
     .push(Profile)
     .push(Swiper)
@@ -25,6 +25,8 @@ router
     .push(Check)
     .push(Uploader)
     .push(List)
+    .push(entry)
+    .push(login)
     .setDefault('/')
     .init();
 
