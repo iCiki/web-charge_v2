@@ -8,6 +8,7 @@ export default {
     url: '/login',
     className: 'login',
     render: function () {
+        // $("#tab_bottom").ui.style.display ="none";
         return tpl;
     },
     bind: function () {

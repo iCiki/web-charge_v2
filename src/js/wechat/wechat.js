@@ -16,7 +16,7 @@ CryptoGraphy = require('./cryptoGraphy'); //微信消息加解密模块
  * 构建 WeChat 对象 即 js中 函数就是对象
  * @param {JSON} config 微信配置文件
  */
-var jinshi = function(config){
+var WeChat = function(config){
     //设置 WeChat 对象属性 config
     this.config = config;
     //设置 WeChat 对象属性 token

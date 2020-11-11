@@ -1,0 +1,59 @@
+body{
+    height: 100%;
+    background-color: #f8f8f8;
+}
+body{
+    font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+.item{
+    padding: 10px 0;
+}
+.item__title{
+    margin-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #999;
+    font-weight: normal;
+    font-size: 14px;
+}
+.item__ctn{
+    padding: 15px 15px;
+}
+.page_feedback{
+    padding: 15px;
+    overflow: auto;
+    background-color: #FFFFFF;
+}
+
+/*fix fastclick很难点中的bug*/
+label > * { pointer-events: none; }
+
+/* 头部标题 */
+.entry_header {
+    padding: 30px;
+    text-align: center;
+    /*background: white;*/
+}
+
+.entry_header h1 {
+    font-size: 50px;
+}
+.login_bt {
+    width: 90%;
+    height: 40px;
+}
+.input_text_style {
+    width: 70%;
+    background-color: white;
+}
+.label_bg {
+    width: 80px;
+}
+.code_bg {
+    width: 40%;
+    color: #10AEFF;
+}
+.code_bg:active {
+    opacity: 0.5;
+}
+

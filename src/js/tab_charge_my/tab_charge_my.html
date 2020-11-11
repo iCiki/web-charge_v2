@@ -13,81 +13,18 @@
         body{
             font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
         }
-        .item{
-            padding: 10px 0;
-        }
-        .item__title{
-            margin-bottom: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-            color: #999;
-            font-weight: normal;
-            font-size: 14px;
-        }
-        .item__ctn{
-            padding: 15px 15px;
-        }
-        .page_feedback{
-            padding: 15px;
-            overflow: auto;
-            background-color: #FFFFFF;
+
+        .p_info_style {
+            height: 100px;
+            width: 100%;
         }
 
-        /*fix fastclick很难点中的bug*/
-        label > * { pointer-events: none; }
-
-        /* 头部标题 */
-        .header {
-            padding: 30px;
-            text-align: center;
-            /*background: white;*/
-        }
-
-        .header h1 {
-            font-size: 50px;
-        }
-        .login_bt {
-            width: 90%;
-            height: 40px;
-        }
-        .input_text_style {
-            width: 70%;
-            background-color: white;
-        }
-        .label_bg {
-            width: 80px;
-        }
-        .code_bg {
-            width: 40%;
-            color: #10AEFF;
-        }
-        .code_bg:active {
-            opacity: 0.5;
-        }
     </style>
-    <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js">
-
-        // $(function() {
-        //     $("#second").click(function () {
-        //
-        //     });
-        //     }
-        // )
-        $("#sendmsg").text("test...");
-        $("#sendmsg").click(function (){
-            console.log("sendmsg clicked....");
-        });
-    </script>
 </head>
 <body ontouchstart>
 <p id="bear"></p>
-
-<div class="header">
-    <h1>Hi</h1>
-    <p>欢迎来到Golden Charge</p>
-</div>
-    <div class="weui-cells weui-cells_form">
-    <div class="weui-cell">
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell p_info_style">
         <div class="weui-cell__hd"><label class="weui-label label_bg">手机号</label></div>
         <div class="weui-cell__bd">
             <input class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入手机号" emptyTips="请输入手机号！" notMatchTips="请输入正确的手机号" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
@@ -108,8 +45,6 @@
     </div>
 
 </div>
-<div class="weui-btn-area">
-    <a id="login_bt" href="javascript:" class="weui-btn weui-btn_primary login_bt">登录</a>
-</div>
+
 </body>
 </html>

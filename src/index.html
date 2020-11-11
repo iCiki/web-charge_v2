@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
@@ -7,11 +7,43 @@
     <meta name="keywords" content="微信,WeUI,示例,案例">
     <meta name="description" content="WeUI 为微信 Web 服务量身设计">
     <title>Golden Charge</title>
-    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.2/weui.min.css">
-    <link rel="stylesheet" href="./weui.css">
+<!--    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.2/weui.min.css">-->
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.css">
 </head>
 <body ontouchstart>
 <div id="container"></div>
+
+<!--    <div class="page" style="height:100%;">-->
+<!--    <div class="page__bd" style="height: 100%;">-->
+<!--        <div class="weui-tab">-->
+<!--            <div class="weui-tab__panel">-->
+<!--&lt;!&ndash;                <div id="container"></div>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="weui-tabbar tab-bottom" id="tab_bottom">-->
+<!--                <a th:onclick="'javasctipt:gototitlecard()'" class="weui-tabbar__item weui-bar__item_on">-->
+<!--                    <span style="display: inline-block;position: relative;">-->
+<!--                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">-->
+<!--                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>-->
+<!--                    </span>-->
+<!--                    <p class="weui-tabbar__label">题卡</p>-->
+<!--                </a>-->
+<!--                <a th:onclick="'javasctipt:collecttitle()'" class="weui-tabbar__item">-->
+<!--                    <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">-->
+<!--                    <p class="weui-tabbar__label">收藏</p>-->
+<!--                </a>-->
+<!--                <a th:onclick="'javasctipt:outnotebox()'" class="weui-tabbar__item">-->
+<!--                    <span style="display: inline-block;position: relative;">-->
+<!--                        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">-->
+<!--                        <span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>-->
+<!--                    </span>-->
+<!--                    <p class="weui-tabbar__label">笔记发表</p>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
 </body>
 </html>
