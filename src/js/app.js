@@ -12,6 +12,7 @@ import Uploader from './uploader/uploader';
 import List from './list/list';
 import entry from './entry/entry';
 import login from './login/login';
+import tab_charge_my from './tab_charge_my/tab_charge_my';
 
 attachFastClick.attach(document.body);
 
@@ -27,6 +28,7 @@ router
     .push(List)
     .push(entry)
     .push(login)
+    .push(tab_charge_my)
     .setDefault('/')
     .init();
 

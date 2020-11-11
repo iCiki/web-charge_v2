@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
-    <title>Welcome!</title>
+    <title>个人中心</title>
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.0.1/weui.min.css">
+    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/2.0.1/weui.css">
     <style>
         html, body{
             height: 100%;
@@ -18,33 +19,101 @@
             height: 100px;
             width: 100%;
         }
+        .left_icon_style {
+            margin-right: 10px;
+        }
+        .person_info {
+            height: 80px;
+        }
+        .avatar_info {
+            height: 50px;
+            width: 50px;
+        }
 
     </style>
 </head>
 <body ontouchstart>
-<p id="bear"></p>
-<div class="weui-cells weui-cells_form">
-    <div class="weui-cell p_info_style">
-        <div class="weui-cell__hd"><label class="weui-label label_bg">手机号</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入手机号" emptyTips="请输入手机号！" notMatchTips="请输入正确的手机号" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
-        </div>
-        <div class="weui-cell__ft">
-            <i class="weui-icon-warn"></i>
-        </div>
-    </div>
-    <div class="weui-cell">
-        <div class="weui-cell__hd"><label class="weui-label label_bg">验证码</label></div>
-        <div class="weui-cell__bd">
-            <input class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入验证码" emptyTips="请输入验证码！" notMatchTips="请输入正确的验证码" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
-        </div>
-        <div class="weui-cell__ft">
-            <i class="weui-icon-warn"></i>
-        </div>
-        <a href="javascript:;" class="code_bg" data-countdown="60" id="sendmsg">点击发送</a>
-    </div>
 
+<div class="weui-tab__bd-item weui-tab__bd-item--active main-bg">
+    <p id="bear"></p>
+    <div class="weui_cells weui_cells_access">
+        <a href="#/register" class="weui_cell person_info">
+            <img src="../../../icon_my_order.png" class="left_icon_style avatar_info" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>131*******7777</p>
+                <p>131*******7777</p>
+            </div>
+        </a>
+        <a href="#/register" class="weui_cell">
+            <img src="../../../icon_my_order.png" class="left_icon_style" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>我的订单</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+        <a href="#/profile" class="weui_cell">
+            <img src="../../../icon_my_order.png" class="left_icon_style" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>我的钱包</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+        <a href="#/swiper" class="weui_cell">
+            <img src="../../../icon_my_order.png" class="left_icon_style" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>联系客服</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+        <a href="#/setting" class="weui_cell">
+            <img src="../../../icon_my_order.png" class="left_icon_style" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>意见反馈</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+        <a href="#/check" class="weui_cell">
+            <img src="../../../icon_my_order.png" class="left_icon_style" />
+            <div class="weui_cell_bd weui_cell_primary">
+                <p>设置</p>
+            </div>
+            <div class="weui_cell_ft"></div>
+        </a>
+    </div>
 </div>
+
+
+<!--    <div class="weui-tab">-->
+<!--    <div class="weui-tab__bd" style="">-->
+<!--    </div>-->
+<!--    <div class="weui-tabbar">-->
+<!--        <router-link to="/weui" class="weui-tabbar__item">-->
+<!--            &lt;!&ndash;<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>&ndash;&gt;-->
+<!--            <div class="weui-tabbar__icon">-->
+<!--                <img src="./assets/img/icon_nav_button.png" alt="">-->
+<!--            </div>-->
+<!--            <p class="weui-tabbar__label">微信</p>-->
+<!--        </router-link>-->
+<!--        <router-link to="/translation" class="weui-tabbar__item">-->
+<!--            <div class="weui-tabbar__icon">-->
+<!--                <img src="./assets/img/icon_nav_msg.png" alt="">-->
+<!--            </div>-->
+<!--            <p class="weui-tabbar__label">通讯录</p>-->
+<!--        </router-link>-->
+<!--        <router-link to="/find" class="weui-tabbar__item">-->
+<!--            <div class="weui-tabbar__icon">-->
+<!--                <img src="./assets/img/icon_nav_article.png" alt="">-->
+<!--            </div>-->
+<!--            <p class="weui-tabbar__label">发现</p>-->
+<!--        </router-link>-->
+<!--        <router-link to="/me" class="weui-tabbar__item">-->
+<!--            <div class="weui-tabbar__icon">-->
+<!--                <img src="./assets/img/icon_nav_cell.png" alt="">-->
+<!--            </div>-->
+<!--            <p class="weui-tabbar__label">我</p>-->
+<!--        </router-link>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 </html>
