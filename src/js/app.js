@@ -13,6 +13,7 @@ import List from './list/list';
 import entry from './entry/entry';
 import login from './login/login';
 import tab_charge_my from './tab_charge_my/tab_charge_my';
+import feedback from "./charge_item_feedback/feedback";
 
 attachFastClick.attach(document.body);
 
@@ -29,6 +30,7 @@ router
     .push(entry)
     .push(login)
     .push(tab_charge_my)
+    .push(feedback)
     .setDefault('/')
     .init();
 
