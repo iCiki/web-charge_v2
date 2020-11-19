@@ -89,12 +89,5 @@
         <div class="weui_cell_ft"></div>
     </a>
 
-    <a href="#/map" class="weui_cell">
-        <div class="weui_cell_bd weui_cell_primary">
-            <p>map</p>
-        </div>
-        <div class="weui_cell_ft"></div>
-    </a>
-
 </div>
 
