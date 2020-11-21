@@ -51,6 +51,11 @@
             height: 40px;
             background-color: #14e0d0;
         }
+        .login_bt:active{
+            opacity: 0.4;
+            background-color: #14e0d0;
+            color: #14e0d0;
+        }
         .input_text_style {
             width: 70%;
             background-color: white;
@@ -91,7 +96,7 @@
     <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label label_bg">手机号</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入手机号" emptyTips="请输入手机号！" notMatchTips="请输入正确的手机号" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
+            <input id="phone" class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入手机号" emptyTips="请输入手机号！" notMatchTips="请输入正确的手机号" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
         </div>
         <div class="weui-cell__ft">
             <i class="weui-icon-warn"></i>
@@ -100,7 +105,7 @@
     <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label label_bg">验证码</label></div>
         <div class="weui-cell__bd">
-            <input class="weui-input input_text_style" type="tel" required pattern="^\d{11}$" maxlength="11" placeholder="请输入验证码" emptyTips="请输入验证码！" notMatchTips="请输入正确的验证码" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
+            <input id="verify_code" class="weui-input input_text_style" type="tel" required pattern="^\d{4}$" maxlength="4" placeholder="请输入验证码" emptyTips="请输入验证码！" notMatchTips="请输入正确的验证码" onpaste="return false;" onkeyup="this.value=this.value.replace(/\D/g,'')">
         </div>
         <div class="weui-cell__ft">
             <i class="weui-icon-warn"></i>

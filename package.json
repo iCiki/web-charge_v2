@@ -46,6 +46,7 @@
         "fastclick": "^1.0.6",
         "iswiper": "^1.4.1",
         "jquery": "^2.2.4",
+        "jquery-weui": "^1.2.1",
         "router": "git+https://github.com/progrape/router.git",
         "weui.js": "^0.2.1"
     }
