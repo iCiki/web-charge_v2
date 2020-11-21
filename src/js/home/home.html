@@ -113,16 +113,24 @@
         }
         body{
             font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+            min-height:100%;
+            margin:0;
+            padding:0;
+            position:relative;
         }
+        main{
+            padding-bottom:50px;
+            background-color: #bdb76b;
+        }/* main的padding-bottom值要等于或大于footer的height值 */
         .person_info {
-            height: 70px;
+            height: 50px;
             width: 100%;
             text-align: center;
         }
         .avatar_info {
-            height: 40px;
-            width: 40px;
-            line-height: 70px;
+            height: 35px;
+            width: 35px;
+            line-height: 50px;
             padding-right: 30px;
         }
         .bottom_tab {
@@ -131,11 +139,10 @@
             padding-left: 0;
             margin-left: 0;
             width: 100%;
-            /*text-align: center;*/
         }
 
         .inner_div {
-            height: 70px;
+            height: 60px;
             width: 100%;
             vertical-align: middle;
         }
@@ -143,19 +150,23 @@
 </head>
 <body ontouchstart>
 
+    <main>main body</main>
     <div  class="bottom_tab">
     <p id="bear"></p>
 
+        <div>
+            <img src="http://dev.wx.goldentime-iot.com/images_web_charge/charge_scan_code.png" class="avatar_info" />
+        </div>
     <div align="center" class="weui_cells ">
-
         <a href="#/tab_charge_my" class="weui_cell person_info">
-
             <div align="center" class="inner_div">
                 <img src="http://dev.wx.goldentime-iot.com/images_web_charge/charge_scan_code.png" class="avatar_info" />
-                <p style="padding-right: 30px;color: #14e0d0">扫码充电</p>
+                <p style="padding-right: 30px;color: #14e0d0;font-size: 15px">扫码充电</p>
             </div>
         </a>
     </div>
+
+
 </div>
 
 </body>

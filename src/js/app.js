@@ -54,10 +54,10 @@ if (NODE_ENV === 'production') {
         });
 
         const option = {
-            title: 'WeUI',
-            desc: 'WeUI, 为微信 Web 服务量身设计',
-            link: 'https://weui.io/example',
-            imgUrl: 'https://mmrb.github.io/avatar/bear.jpg'
+            title: 'Golden Charge',
+            desc: '未来已来，及时续航'
+            // link: 'https://weui.io/example',
+            // imgUrl: 'https://mmrb.github.io/avatar/bear.jpg'
         };
         wx.onMenuShareAppMessage(option);
         wx.onMenuShareTimeline(option);
