@@ -1,5 +1,5 @@
 import tpl from 'raw!./login.html';
-
+import * as httputils from '../httputils';
 
 
 export default {
@@ -16,29 +16,17 @@ export default {
                $.weui.topTips("请输入正确的手机号！");
                return;
             }
-            $.ajax(
-                {
-                    url:'http://dev.wx.goldentime-iot.com/api/wx/user/verifyCode/'+$("#phone").val(),
-                    type:'get',
-                    dateType:'json',
-                    // beforeSend: function(xhr) {
-                    //     // xhr.setRequestHeader("Accept-Language:'zh/en'");
-                    //     xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-                    //     // xhr.setRequestHeader("ser-access-token:'zh'");
-                    // },
-                    headers:{'Content-Type':'application/json;charset=utf8','Access-Control-Allow-Credentials':'true','Access-Control-Allow-Origin':'*'},
-                    // data:JSON.stringify(org),
-                    success:function(data){
-                        console.log(JSON.stringify(data)+"");
-                        sendmessage("#sendmsg");
-                        },
-                    error:function(data){
-                        console.log("error");
-                        console.log(JSON.stringify(data)+"");
-                    }
-                }
-            );
-
+            //获取验证码短信接口
+            httputils.httpGet(
+                '/api/wx/user/verifyCode/',
+                $("#phone").val(),
+                "",
+                function (data) {
+                console.log("login.js verifyCode success data = "+JSON.stringify(data));
+            },
+                function (data) {
+                    console.log("login.js verifyCode failed data = "+JSON.stringify(data));
+                });
         });
 
         $("#login_bt").on('click', function () {
@@ -50,11 +38,14 @@ export default {
                 $.weui.topTips("请输入正确4位验证码！", "forbidden");
                 return;
             }
-            console.log("login_bt clicked...");
-            $.weui.loading("登录中...");
-            setTimeout(function () {
-                $.weui.hideLoading();
-            }, 3000);
+            // $.weui.loading("登录中...");
+            // setTimeout(function () {
+            //     $.weui.hideLoading();
+            // }, 3000);
+            httputils.httpGet(
+                "/api/wx/user/login/",
+
+            );
         });
     }
 };
