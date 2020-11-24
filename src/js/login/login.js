@@ -1,5 +1,6 @@
 import tpl from 'raw!./login.html';
 import * as httputils from '../httputils';
+import * as wxs from '../apis/wx_funs'
 
 
 export default {
@@ -10,6 +11,7 @@ export default {
         return tpl;
     },
     bind: function () {
+        wxs.scancode();
         $("#sendmsg").on('click', function () {
             var phone = isMobileNumber($("#phone").val());
             if(!phone){
@@ -26,7 +28,7 @@ export default {
             },
                 function (data) {
                     console.log("login.js verifyCode failed data = "+JSON.stringify(data));
-                });
+                }, null);
         });
 
         $("#login_bt").on('click', function () {
@@ -60,7 +62,7 @@ export default {
                 "","",
                 function (data) {
                     $.weui.hideLoading();
-                    $.weui.alert(JSON.stringify(data));
+                    $.weui.alert("success"+JSON.stringify(data));
                 },
                 function (data) {
                     $.weui.hideLoading();
