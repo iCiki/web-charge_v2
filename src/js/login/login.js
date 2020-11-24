@@ -42,9 +42,31 @@ export default {
             // setTimeout(function () {
             //     $.weui.hideLoading();
             // }, 3000);
-            httputils.httpGet(
-                "/api/wx/user/login/",
 
+            var bodyData = {
+                "appKey": "jinshi",
+                "data": {
+                    "code": "",   //TODO ???
+                    "mobile": $("#phone").val(),
+                    "mobileVerfiCode": $("#verify_code").val(),
+                    "wxOpenId": ""
+                },
+                "version": ""
+            };
+            //登录操作
+            $.weui.loading("登录中。。。");
+            httputils.httpPost(
+                "/api/wx/user/login",
+                "","",
+                function (data) {
+                    $.weui.hideLoading();
+                    $.weui.alert(JSON.stringify(data));
+                },
+                function (data) {
+                    $.weui.hideLoading();
+                    $.weui.alert(data.toString());
+                },
+                bodyData
             );
         });
     }

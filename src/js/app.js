@@ -15,6 +15,7 @@ import login from './login/login';
 import tab_charge_my from './tab_charge_my/tab_charge_my';
 import feedback from "./charge_item_feedback/feedback";
 import map from "./map/map";
+import start from "./start/start";
 
 attachFastClick.attach(document.body);
 
@@ -33,11 +34,12 @@ router
     .push(tab_charge_my)
     .push(feedback)
     .push(map)
+    .push(start)
     .setDefault('/')
     .init();
 
 if (NODE_ENV === 'production') {
-    $.getJSON('https://weui.io/api/sign?url=' + encodeURIComponent(location.href.split('#')[0])).success((res) => {
+    /*$.getJSON('https://weui.io/api/sign?url=' + encodeURIComponent(location.href.split('#')[0])).success((res) => {
         wx.config({
             debug: false,
             appId: res.appid,
@@ -62,5 +64,5 @@ if (NODE_ENV === 'production') {
         wx.onMenuShareAppMessage(option);
         wx.onMenuShareTimeline(option);
         wx.onMenuShareQQ(option);
-    });
+    });*/
 }
