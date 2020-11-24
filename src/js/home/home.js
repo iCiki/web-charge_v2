@@ -4,10 +4,24 @@ export default {
     url: '/',
     className: 'home',
     render: function (){
-        // document.getElementById("info_header").style.display = "block";
+        document.getElementById("mapcontainer").style.display = "block";
+        document.getElementById("info_header").style.display = "block";
         return tpl;
+    },
+    bind: function () {
+
+        $("#main_avatar").on('click', function () {
+            switchToTabMy();
+        });
+        $("#main_name").on('click', function () {
+            switchToTabMy();
+        });
     }
 };
+
+function switchToTabMy() {
+    window.location.href = "#/tab_charge_my";
+}
 
 // $.ajax(
 //     {

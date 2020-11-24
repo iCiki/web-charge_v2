@@ -7,8 +7,8 @@ export default {
     url: '/login',
     className: 'login',
     render: function () {
-        // document.getElementById("mapcontainer").style.display = "none";
-        // document.getElementById("info_header").style.display = "none";
+        document.getElementById("mapcontainer").style.display = "none";
+        document.getElementById("info_header").style.display = "none";
         return tpl;
     },
     bind: function () {
