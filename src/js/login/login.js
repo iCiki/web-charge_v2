@@ -7,11 +7,12 @@ export default {
     url: '/login',
     className: 'login',
     render: function () {
-        // $("#tab_bottom").ui.style.display ="none";
+        // document.getElementById("mapcontainer").style.display = "none";
+        // document.getElementById("info_header").style.display = "none";
         return tpl;
     },
     bind: function () {
-        wxs.scancode();
+        // wxs.scancode();
         $("#sendmsg").on('click', function () {
             var phone = isMobileNumber($("#phone").val());
             if(!phone){

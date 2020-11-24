@@ -10,7 +10,59 @@
 <!--    <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.2/weui.min.css">-->
     <link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/0.4.3/weui.css">
 </head>
+<style>
+    #mapcontainer {
+        width: 100%;
+        height: 100%;
+    }
+    .header_background {
+        background-color: white;
+        margin-top: 0;
+        display: block;
+    }
+    .name_style {
+        margin-left: 0px;
+        color:#14e0d0;
+    }
+    .service_icon_style {
+        width: 25px;
+        height: 25px;
+    }
+</style>
 <body ontouchstart>
+
+<div class="weui_cells weui_cells_access header_background" id="info_header">
+    <a  class="weui_cell ">
+        <img src="http://dev.wx.goldentime-iot.com/images_web_charge/default_avatar.png" class="left_icon_style avatar_info" />
+        <div class="weui_cell_bd weui_cell_primary">
+            <p class="name_style">ciki</p>
+        </div>
+        <div class="weui_cell_hd ">
+            <img src="http://dev.wx.goldentime-iot.com/images_web_charge/item_contact_service.png" class="service_icon_style" />
+        </div>
+    </a>
+</div>
+
+<div id="mapcontainer"></div>
+<script>
+    function initMap() {
+        var map = new TMap.Map("mapcontainer", {
+            pitch: 45,
+            zoom: 15,
+            center: new TMap.LatLng(39.984104, 116.307503)
+        });
+    }
+    function loadScript() {
+        //创建script标签，并设置src属性添加到body中
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://map.qq.com/api/gljs?v=1.exp&key=TIZBZ-4R46V-XUTP4-UQ23R-6KSE5-HKB7V&callback=initMap";
+        document.body.appendChild(script);
+    }
+    window.onload = loadScript;
+</script>
+
+
 <div id="container"></div>
 
 <!--<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>-->

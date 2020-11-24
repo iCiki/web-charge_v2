@@ -4,6 +4,7 @@ export default {
     url: '/',
     className: 'home',
     render: function (){
+        // document.getElementById("info_header").style.display = "block";
         return tpl;
     }
 };

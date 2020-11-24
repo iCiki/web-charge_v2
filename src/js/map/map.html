@@ -1,80 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>异步加载地图</title>
 </head>
-<style>
-    .map {
-        width: 1000px;
-        height: 1000px;
-        margin: 0 auto;
-        background: white;
+
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #container {
+        width: 0%;
+        height: 0%;
     }
 </style>
-<body>
-<div class="map"></div>
 
-<script src="http://map.qq.com/api/js?v=2.exp&key=TIZBZ-4R46V-XUTP4-UQ23R-6KSE5-HKB7V&libraries=geometry,convertor"></script>
-<script src="qqMap.js"></script>
+<body>
+<div id="container"></div>
 <script>
-    var map = QQMap.init(".map", {
-        center: [39.916527, 116.397128],
-        zoom: 22
-    });
-    var marker = QQMap.setMarker({
-        position: [39.916527, 116.397128],
-        url: 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png',
-        size: [150, 150],
-        origin: [0, 0],
-        anchor: [75, 75],
-        scaleSize: [150, 150],
-        zIndex:9999,
-        shape: {
-            coords: [0, 0, 50],
-            type: "circle"
-        }
-    });
-    var overlay = QQMap.setOverlay({
-        content: "<span>我是浮层</span>",
-        position: [39.916527, 116.397128],
-        offSet: [200, 200],
-        zIndex: 999,
-        style: "width:100px"
-    });
-    var polyLine = QQMap.setPolyLine({
-        path: [
-            [39.916527, 116.387128],
-            [39.926627, 116.397158],
-            [39.936528, 116.397428]
-        ],
-        clickable:false,
-        strokeColor:"#fab919",
-        strokeWeight:10,
-        strokeDashStyle:"dash",
-        visible:true,
-        zIndex:10000
-    });
-    var infoWindow = QQMap.setInfoWindow({
-        content: "<span>我是弹窗</span>",
-        position: [39.916527, 116.397128]
-    });
-    var path = [
-        [39.916527, 116.387128],
-        [39.926627, 116.397158],
-        [39.936528, 116.397428]
-    ];
-    for(var i =0 ;i<path.length;i++){
-        QQMap.setBoundsPoint(path[i][0],path[i][1])
+    function initMap() {
+        var map = new TMap.Map("container", {
+            pitch: 45,
+            zoom: 12,
+            center: new TMap.LatLng(39.984104, 116.307503)
+        });
     }
-    QQMap.setMapBounds();
-    QQMap.translate({
-        position:[39.916527, 116.387128],
-        type:1,
-        callBack:function(data){
-            console.log(data)
-        }
-    })
+    function loadScript() {
+        //创建script标签，并设置src属性添加到body中
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&callback=initMap";
+        document.body.appendChild(script);
+    }
+    window.onload = loadScript;
 </script>
 </body>
+
 </html>

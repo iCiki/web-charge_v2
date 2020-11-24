@@ -1,7 +1,7 @@
 /**
  * Created by zhongyufei on 2016/1/10.
  */
-var QQMap = {
+let QQMap = {
     map: null,
 
     LatLngBounds : new qq.maps.LatLngBounds(),
