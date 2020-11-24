@@ -11,6 +11,36 @@ export default {
         return tpl;
     },
     bind: function () {
-
+        $("#my_my_orders").on('click', function () {
+            $.weui.topTips("My orders will be Accessible soon!");
+        });
+        $("#my_my_wallets").on('click', function () {
+            $.weui.topTips("My wallets will be Accessible soon!");
+        });
+        $("#my_contact_service").on('click', function () {
+            $.weui.topTips("Contact service will be Accessible soon!");
+        });
+        $("#my_personal_settings").on('click', function () {
+            $.weui.topTips("Personal settings will be Accessible soon!");
+        });
+        // $("#").on('click', function () {
+        //     $.weui.topTips("It will be Accessible soon!");
+        // });
+        // $("#").on('click', function () {
+        //
+        // });
     }
 };
+
+function onclick(id) {
+    switch (id) {
+    case "personal_settings":
+        window.location.href = "#/feedback";
+        break;
+    case "contact_service":
+        $.weui.topTips("Accessible soon!");
+        break;
+    default:
+        $.weui.topTips("It will be Accessible soon!");
+    }
+}
