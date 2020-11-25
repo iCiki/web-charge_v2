@@ -6,6 +6,7 @@ export default {
     render: function (){
         document.getElementById("mapcontainer").style.display = "block";
         document.getElementById("info_header").style.display = "block";
+        getUrlArgument();
         return tpl;
     },
     bind: function () {
@@ -16,11 +17,43 @@ export default {
         $("#main_name").on('click', function () {
             switchToTabMy();
         });
+        $("#main_icon_service").on('click', function () {
+            $.weui.topTips("Service arrive soon!");
+        });
+        $("#scan_for_charging").on('click', function () {
+            window.location.href = "#/tab_charge_my";
+        });
     }
 };
-
+//跳转到个人中心页面
 function switchToTabMy() {
     window.location.href = "#/tab_charge_my";
+}
+
+function getUrlArgument() {
+    console.log("getUrlArgument....");
+    // var url = location.search; //获取url中"?“符后的字串
+    // if (url.indexOf("?") != -1) {
+    //     var str = url.substr(1);
+    //     var strs = str.split("&");
+    //     console.log("str = "+str+", strs = "+strs);
+    //     var code = decodeURIComponent(strs[0].replace("code=",""));//获取url中的id
+    //     var state= decodeURIComponent(strs[1].replace("state=",""));//获取url中的name
+    //     console.log("finally code = "+code+", state = "+state);
+    // } else {
+    //     console.log("no argument!!!");
+    // }
+    console.log("code = "+getQueryString("code"));
+    console.log("state = "+getQueryString("state"));
+}
+
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r != null){
+        return decodeURI(r[2]);
+    }
+    return null;
 }
 
 // $.ajax(
