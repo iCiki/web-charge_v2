@@ -72,6 +72,7 @@ function getExceptionArgument(filter, msg){
 window.onerror = handleError
 function handleError(msg,url,l)
 {
+    console.log("handleError msg = "+msg);
     var code = getExceptionArgument("code", msg);
     var state = getExceptionArgument("state", msg);
     console.log("wx web authorized response code = "+code);
@@ -96,7 +97,7 @@ function webAuthAndGetCode() {
             },*/
             // data:JSON.stringify(org),
             success: function (data) {
-                console.log(JSON.stringify(data)+"");
+                console.log("微信网页授权请求结果："+JSON.stringify(data)+"");
                 // successCallback(data);
             },
             error: function (data) {
