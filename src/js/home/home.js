@@ -90,7 +90,7 @@ function webAuthAndGetCode() {
             //微信网页授权并获取code
             url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf6f697e4f44611f9&redirect_uri=http://dev.wx.goldentime-iot.com/&role_type=1&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect',
             type: 'GET',
-            dateType: 'json',
+            dateType: 'text',
             /*headers: {
                 'Content-Type': 'application/json;charset=utf8',
                 'Accept-Language': 'zh',
@@ -98,11 +98,11 @@ function webAuthAndGetCode() {
             },*/
             // data:JSON.stringify(org),
             success: function (data) {
-                console.log("微信网页授权请求成功结果："+JSON.stringify(data)+"");
+                console.log("微信网页授权请求成功结果："+data+"");
                 // successCallback(data);
             },
             error: function (data) {
-                console.log("微信网页授权请求失败结果："+JSON.stringify(data)+"");
+                console.log("微信网页授权请求失败结果："+data+"");
             }
         }
     );
