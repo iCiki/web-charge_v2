@@ -51,11 +51,14 @@ function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
     if(r != null){
-        return decodeURI(r[2]);
+        var tmp = decodeURI(r[2]);
+        console.log("tmp = "+tmp);
+        return tmp;
     }
     return null;
 }
 
+//通过异常捕获来获取url重定向过来的参数
 function getExceptionArgument(filter, msg){
     var firs = msg.split("?");
     if(firs.length != 2){
@@ -67,21 +70,20 @@ function getExceptionArgument(filter, msg){
     if(twos.length < 2){
         return null;
     }
-    // alert(getQueryString(filter));
+    var vars = twos[0].split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == filter){
+            return pair[1];
+        }
+    }
+    return null;
 }
 
 window.onerror = handleError
 function handleError(msg,url,l)
 {
-    var txt="There was an error on this page.\n\n"
-    // txt+="Error: " + msg + "\n"
-    txt+="Error: " + msg + "\n"
-    txt+="URL: " + url + "\n"
-    txt+="Line: " + l + "\n\n"
-    txt+="Click OK to continue.\n\n"
-    // alert(msg);
-    // console.log(""getQueryString("code")
-    getExceptionArgument("code", msg);
+    alert(getExceptionArgument("state", msg));
     return false;
 }
 
