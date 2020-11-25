@@ -1,0 +1,11 @@
+{
+    "token":"jinshi",
+    "appID":"wxf6f697e4f44611f9",
+    "appScrect":"cd18cd3e969d0e16962767fe6fb73cdf",
+    "encodingAESKey":"RVBMSOKktPQIXEvWaKUYILaG3dLn8WOr95JKvVdXr6F",
+    "apiDomain":"https://api.weixin.qq.com/",
+    "apiURL":{
+        "accessTokenApi":"%scgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
+        "createMenu":"%scgi-bin/menu/create?access_token=%s"
+    }
+}

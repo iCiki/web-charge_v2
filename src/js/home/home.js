@@ -1,4 +1,9 @@
 import tpl from 'raw!./home.html';
+import {httpGet} from '../httputils';
+const config = require('./config.json'),
+    accessTokenJson = require('./access_token.json'),
+    util = require('util'),
+    userInfo = require('./user_info.json');
 
 export default {
     url: '/',
@@ -6,7 +11,7 @@ export default {
     render: function (){
         document.getElementById("mapcontainer").style.display = "block";
         document.getElementById("info_header").style.display = "block";
-        getUrlArgument();
+        webAuthAndGetCode();
         return tpl;
     },
     bind: function () {
@@ -22,29 +27,13 @@ export default {
         });
         $("#scan_for_charging").on('click', function () {
             window.location.href = "#/tab_charge_my";
+
         });
     }
 };
 //跳转到个人中心页面
 function switchToTabMy() {
     window.location.href = "#/tab_charge_my";
-}
-
-function getUrlArgument() {
-    console.log("getUrlArgument....");
-    // var url = location.search; //获取url中"?“符后的字串
-    // if (url.indexOf("?") != -1) {
-    //     var str = url.substr(1);
-    //     var strs = str.split("&");
-    //     console.log("str = "+str+", strs = "+strs);
-    //     var code = decodeURIComponent(strs[0].replace("code=",""));//获取url中的id
-    //     var state= decodeURIComponent(strs[1].replace("state=",""));//获取url中的name
-    //     console.log("finally code = "+code+", state = "+state);
-    // } else {
-    //     console.log("no argument!!!");
-    // }
-    console.log("code = "+getQueryString("code"));
-    console.log("state = "+getQueryString("state"));
 }
 
 function getQueryString(name) {
@@ -83,28 +72,119 @@ function getExceptionArgument(filter, msg){
 window.onerror = handleError
 function handleError(msg,url,l)
 {
-    alert(getExceptionArgument("state", msg));
+    var code = getExceptionArgument("code", msg);
+    var state = getExceptionArgument("state", msg);
+    console.log("wx web authorized response code = "+code);
+    console.log("wx web authorized response state = "+state);
+    if(!code){
+        getAccessToken();
+    }
     return false;
 }
 
-// $.ajax(
-//     {
-//         //微信授权认证
-//         url:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf6f697e4f44611f9&redirect_uri=http://dev.wx.goldentime-iot.com/api/wx/login&role_type=1&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect',
-//         type:'GET',
-//         dateType:'json',
-//         headers:{'Content-Type':'application/json;charset=utf8','Accept-Language':'zh','user-access-token':'111'},
-//         // data:JSON.stringify(org),
-//         success:function(data){
-//             // console.log(JSON.stringify(data)+"");
-//             console.log(data);
-//             // sendmessage("#sendmsg");
-//             successCallback(data);
-//         },
-//         error:function(data){
-//             // console.log("error");
-//             // console.log(JSON.stringify(data)+"");
-//             failedCallback(data);
-//         }
-//     }
-// );
+function webAuthAndGetCode() {
+    $.ajax(
+        {
+            //微信网页授权并获取code
+            url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf6f697e4f44611f9&redirect_uri=http://dev.wx.goldentime-iot.com/&role_type=1&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect',
+            type: 'GET',
+            dateType: 'json',
+            /*headers: {
+                'Content-Type': 'application/json;charset=utf8',
+                'Accept-Language': 'zh',
+                'user-access-token': '111'
+            },*/
+            // data:JSON.stringify(org),
+            success: function (data) {
+                console.log(JSON.stringify(data)+"");
+                // successCallback(data);
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data)+"");
+            }
+        }
+    );
+}
+
+ function getAccessToken(code){
+
+     if(accessTokenJson.access_token === "" || accessTokenJson.expires_time < currentTime) {
+         $.ajax(
+             {
+                 //微信网页授权并获取code
+                 url: ' https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + config.appID + '&secret=' + config.appScrect + '&code=' + code + '&grant_type=authorization_code',
+                 type: 'GET',
+                 dateType: 'json',
+                 /*headers: {
+                     'Content-Type': 'application/json;charset=utf8',
+                     'Accept-Language': 'zh',
+                     'user-access-token': '111'
+                 },*/
+                 // data:JSON.stringify(org),
+                 success: function (data) {
+                     var result = JSON.parse(data);
+                     console.log("get access token result = "+result);
+                     if(data.indexOf("errcode") < 0){
+                         accessTokenJson.access_token = result.access_token;
+                         accessTokenJson.expires_time = new Date().getTime() + (parseInt(result.expires_in) - 200) * 1000;
+                         accessTokenJson.openid = result.openid;
+                         accessTokenJson.scope  = result.scope;
+
+                         //更新本地存储的
+                         fs.writeFile('./access_token.json',JSON.stringify(accessTokenJson));
+                         //将获取后的 access_token 返回
+                         resolve(accessTokenJson.access_token);
+                         getUserInfo(accessTokenJson.access_token, accessTokenJson.openid);
+                     } else {
+                         //将错误返回
+                         resolve(result);
+                         console.log("get access token failed. result = "+result);
+                     }
+                 },
+                 error: function (data) {
+                     console.log(JSON.stringify(data) + "");
+                 }
+             }
+         );
+     } else {
+         return accessTokenJson.access_token;
+     }
+}
+
+function getUserInfo(
+    accessToken,
+    openId
+) {
+    $.ajax(
+        {
+            //微信网页授权并获取code
+            url: 'https://api.weixin.qq.com/sns/userinfo?access_token="+accessToken+"&openid="+openId+"&lang=zh_CN',
+            type: 'GET',
+            dateType: 'json',
+            /*headers: {
+                'Content-Type': 'application/json;charset=utf8',
+                'Accept-Language': 'zh',
+                'user-access-token': '111'
+            },*/
+            // data:JSON.stringify(org),
+            success: function (data) {
+                console.log(JSON.stringify(data)+"");
+                // successCallback(data);
+                userInfo.nickname   = data.nickname;
+                userInfo.openid     = data.openid;
+                userInfo.city       = data.city;
+                userInfo.country    = data.country;
+                userInfo.headimgurl = data.headimgurl;
+                userInfo.province   = data.province;
+                userInfo.sex        = data.sex;
+                userInfo.unionid    = data.unionid;
+            },
+            error: function (data) {
+                console.log(JSON.stringify(data)+"");
+            }
+        }
+    );
+
+}
+
+
