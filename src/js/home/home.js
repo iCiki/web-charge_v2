@@ -56,6 +56,20 @@ function getQueryString(name) {
     return null;
 }
 
+function getExceptionArgument(filter, msg){
+    var firs = msg.split("?");
+    if(firs.length != 2){
+        return null;
+    }
+    console.log("after ? = "+firs[1]);
+    // alert(firs[1]);
+    var twos = firs[1].split(" ");
+    if(twos.length < 2){
+        return null;
+    }
+    // alert(getQueryString(filter));
+}
+
 window.onerror = handleError
 function handleError(msg,url,l)
 {
@@ -65,7 +79,9 @@ function handleError(msg,url,l)
     txt+="URL: " + url + "\n"
     txt+="Line: " + l + "\n\n"
     txt+="Click OK to continue.\n\n"
-    alert(txt)
+    // alert(msg);
+    // console.log(""getQueryString("code")
+    getExceptionArgument("code", msg);
     return false;
 }
 
