@@ -98,11 +98,11 @@ function webAuthAndGetCode() {
             },*/
             // data:JSON.stringify(org),
             success: function (data) {
-                console.log("微信网页授权请求成功结果："+data+"");
+                console.log("微信网页授权请求成功结果："+data.toString()+"");
                 // successCallback(data);
             },
             error: function (data) {
-                console.log("微信网页授权请求失败结果："+data+"");
+                console.log("微信网页授权请求失败结果："+data.toString()+"");
             }
         }
     );
