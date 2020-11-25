@@ -56,6 +56,19 @@ function getQueryString(name) {
     return null;
 }
 
+window.onerror = handleError
+function handleError(msg,url,l)
+{
+    var txt="There was an error on this page.\n\n"
+    // txt+="Error: " + msg + "\n"
+    txt+="Error: " + msg + "\n"
+    txt+="URL: " + url + "\n"
+    txt+="Line: " + l + "\n\n"
+    txt+="Click OK to continue.\n\n"
+    alert(txt)
+    return false;
+}
+
 // $.ajax(
 //     {
 //         //微信授权认证
