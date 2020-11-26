@@ -90,12 +90,13 @@ function webAuthAndGetCode() {
             //微信网页授权并获取code
             url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxf6f697e4f44611f9&redirect_uri=http://dev.wx.goldentime-iot.com/&role_type=1&response_type=code&scope=snsapi_userinfo&state=1&connect_redirect=1#wechat_redirect',
             type: 'GET',
-            dateType: 'text',
+            dataType: 'text',
             /*headers: {
                 'Content-Type': 'application/json;charset=utf8',
                 'Accept-Language': 'zh',
                 'user-access-token': '111'
             },*/
+            // headers:{'Content-Type':'application/json;charset=utf8','Accept-Language':'zh','user-access-token':'111'},
             // data:JSON.stringify(org),
             success: function (data) {
                 console.log("请求网页授权成功");
@@ -118,7 +119,7 @@ function webAuthAndGetCode() {
                  //微信网页授权并获取code
                  url: ' https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + config.appID + '&secret=' + config.appScrect + '&code=' + code + '&grant_type=authorization_code',
                  type: 'GET',
-                 dateType: 'json',
+                 dataType: 'json',
                  /*headers: {
                      'Content-Type': 'application/json;charset=utf8',
                      'Accept-Language': 'zh',
@@ -164,7 +165,7 @@ function getUserInfo(
             //微信网页授权并获取code
             url: 'https://api.weixin.qq.com/sns/userinfo?access_token="+accessToken+"&openid="+openId+"&lang=zh_CN',
             type: 'GET',
-            dateType: 'json',
+            dataType: 'json',
             /*headers: {
                 'Content-Type': 'application/json;charset=utf8',
                 'Accept-Language': 'zh',

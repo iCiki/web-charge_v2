@@ -50,7 +50,7 @@ export function httpPost(
         //  /api/wx/user/verifyCode
         url:'http://dev.wx.goldentime-iot.com'+apiUrl+urlPath+urlParams,
         type:'POST',
-        dateType:'json',
+        dataType:'json',
         headers:{'Content-Type':'application/json;charset=utf8','Accept-Language':'zh','user-access-token':'111'},
         data:JSON.stringify(bodyData),
         success:function(data){
