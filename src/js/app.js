@@ -37,6 +37,7 @@ router
     .push(start)
     .setDefault('/')
     .init();
+var vc = new vConsole();
 
 if (NODE_ENV === 'production') {
     /*$.getJSON('https://weui.io/api/sign?url=' + encodeURIComponent(location.href.split('#')[0])).success((res) => {
