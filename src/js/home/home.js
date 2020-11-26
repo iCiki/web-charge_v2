@@ -1,5 +1,5 @@
 import tpl from 'raw!./home.html';
-import {httpGet} from '../httputils';
+import * as http from '../httputils';
 const config = require('./config.json'),
     accessTokenJson = require('./access_token.json'),
     util = require('util'),
@@ -98,11 +98,11 @@ function webAuthAndGetCode() {
             },*/
             // data:JSON.stringify(org),
             success: function (data) {
-                console.log("微信网页授权请求成功结果："+data.toString()+"");
+                console.log("微信网页授权请求成功结果："+http.obj2string(data)+"");
                 // successCallback(data);
             },
             error: function (data) {
-                console.log("微信网页授权请求失败结果："+data.toString()+"");
+                console.log("微信网页授权请求失败结果："+http.obj2string(data)+"");
             }
         }
     );
